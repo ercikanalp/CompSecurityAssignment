@@ -1,0 +1,15 @@
+{
+  "id": "user1",
+  "password": "password1",
+  "server": {
+    "ip": "localhost",
+    "port": "9999"
+  },
+  "actions": {
+    "delay": "5",
+    "steps": [
+      "INCREASE",
+      "DECREASE"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "id": "alp",
+  "password": "ercikan",
+  "server": {
+    "ip": "localhost",
+    "port": "9999"
+  },
+  "actions": {
+    "delay": "5",
+    "steps": [
+      "INCREASE",
+      "DECREASE"
+    ]
+  }
+}
