@@ -34,46 +34,42 @@ public class Client {
                 throw new IOException("Login failed: " + serverResponse);
             }
 
-            // Handle actions
             while (true) {
                 System.out.println("Choose action (1 for INCREASE, 2 for DECREASE, 3 for PRINT, 0 to exit):");
-                int choice = scanner.nextInt();
-
-                if (choice == 0) {
-                    // Exit and log "Logged out"
-                    System.out.println("Logged out");
-                    break;
-                }
-
-                if (choice == 3) {
-                    // Print current value
-                    out.println("PRINT");
-                    out.flush();
-                    serverResponse = br.readLine();
-                    if (serverResponse != null) {
-                        System.out.println("Data from Server: " + serverResponse);
-                    } else {
-                        throw new IOException("No response from server.");
+                try {
+                    int choice = Integer.parseInt(scanner.nextLine());
+                    if (choice == 0) {
+                        System.out.println("Logged out");
+                        break;
+                    } else if (choice == 1 || choice == 2) {
+                        // Increase or decrease value
+                        System.out.println("Enter amount:");
+                        int amount = Integer.parseInt(scanner.nextLine()); // Changed this line
+                        String action = choice == 1 ? "INCREASE" : "DECREASE";
+                        out.println(action + " " + amount);
+                        out.flush();
+                        serverResponse = br.readLine();
+                        if (serverResponse != null) {
+                            System.out.println("Data from Server: " + serverResponse);
+                        } else {
+                            throw new IOException("No response from server.");
+                        }
+                    } else if (choice == 3) {
+                        // Print current value
+                        out.println("PRINT");
+                        out.flush();
+                        serverResponse = br.readLine();
+                        if (serverResponse != null) {
+                            System.out.println("Data from Server: " + serverResponse);
+                        } else {
+                            throw new IOException("No response from server.");
+                        }
                     }
-                }
-
-                else if (choice == 1 || choice == 2) {
-                    // Increase or decrease value
-                    System.out.println("Enter amount:");
-                    int amount = scanner.nextInt();
-                    String action = choice == 1 ? "INCREASE" : "DECREASE";
-                    out.println(action + " " + amount);
-                    out.flush();
-                    serverResponse = br.readLine();
-                    if (serverResponse != null) {
-                        System.out.println("Data from Server: " + serverResponse);
-                    } else {
-                        throw new IOException("No response from server.");
-                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid input");
                 }
             }
         } catch (IOException e) {
-            // Handle the exception for unsuccessful login and invalid input for action
             System.out.println("Error: " + e.getMessage());
         } finally {
             if (s != null) {

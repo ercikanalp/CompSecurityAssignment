@@ -10,7 +10,7 @@ public class Server {
     private static Map<String, Integer> userValues = new HashMap<>();
     private static String credentialsFile = "src/credentials.txt";
     private static String logFile = "src/server_log.txt";
-    private static Set<String> activeSessions = new HashSet<>(); // Added active sessions set
+    private static Set<String> activeSessions = new HashSet<>();
 
     public static void main(String[] args) throws Exception {
         loadValidCredentials(credentialsFile);
