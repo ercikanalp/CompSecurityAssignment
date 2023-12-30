@@ -4,6 +4,7 @@ import java.net.Socket;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+
 public class Server {
     private static Map<String, String> validCredentials = new HashMap<>();
     private static Map<String, Integer> userValues = new HashMap<>();
@@ -33,7 +34,7 @@ public class Server {
                 String clientId = credentials[0];
                 String password = credentials[1];
                 int initialValue = Integer.parseInt(credentials[2]);
-
+                System.out.println("Loaded credentials: " + clientId + ":" + password + ":" + initialValue);
                 validCredentials.put(clientId, password);
                 userValues.put(clientId, initialValue);
             }

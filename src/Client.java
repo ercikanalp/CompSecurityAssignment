@@ -55,7 +55,9 @@ public class Client {
                     } else {
                         throw new IOException("No response from server.");
                     }
-                } else if (choice == 1 || choice == 2) {
+                }
+
+                else if (choice == 1 || choice == 2) {
                     // Increase or decrease value
                     System.out.println("Enter amount:");
                     int amount = scanner.nextInt();
@@ -71,8 +73,8 @@ public class Client {
                 }
             }
         } catch (IOException e) {
-            // Handle the exception for unsuccessful login
-            System.out.println("An error occurred: " + e.getMessage());
+            // Handle the exception for unsuccessful login and invalid input for action
+            System.out.println("Error: " + e.getMessage());
         } finally {
             if (s != null) {
                 s.close();

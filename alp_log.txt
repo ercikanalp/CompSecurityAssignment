@@ -1,2 +1,0 @@
-alp INCREASE by 1
-alp INCREASE by 1
